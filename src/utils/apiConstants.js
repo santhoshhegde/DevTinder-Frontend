@@ -4,4 +4,5 @@ export const API_ENDPOINTS = {
   signIn: "/signIn",
   signUp: "/signUp",
   profile: "/profile",
+  logout: "/logout",
 };

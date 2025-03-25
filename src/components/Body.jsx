@@ -8,7 +8,7 @@ import { addUser } from "../store/userSlice";
 import { useEffect } from "react";
 
 function Body() {
-  const dispacth = useDispatch();
+  const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const navigate = useNavigate();
   const fetchUser = async () => {
@@ -17,13 +17,13 @@ function Body() {
       const res = await axios.get(baseURL + API_ENDPOINTS.profile, {
         withCredentials: true,
       });
-      console.log(res.data.data);
-      dispacth(addUser(res.data.data));
+      // console.log(res.data.data);
+      dispatch(addUser(res.data.data));
     } catch (err) {
-      if (res.status === 401) {
-        navigate(API_ENDPOINTS.signIn);
+      if (err.response?.status === 401) {
+        navigate("/login");
       }
-      console.log(err.message);
+      console.log(err.response?.message);
     }
   };
 

@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("varun@water.in");
   const [password, setPassword] = useState("Varun@anything/0");
-  const dispacth = useDispatch();
+  const [error, setError] = useState("");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleLogin = async () => {
     try {
@@ -19,10 +20,11 @@ const Login = () => {
         },
         { withCredentials: true }
       );
-      dispacth(addUser(response.data));
+      console.log(response.data);
+      dispatch(addUser(response.data));
       navigate("/");
     } catch (err) {
-      console.log("Error:" + err.message);
+      setError(err.response.data);
     }
   };
   return (
@@ -47,6 +49,9 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          {error && (
+            <p className="m-auto text-l text-red-600 font-bold">{error}</p>
+          )}
           <div className="card-actions justify-center">
             <button className="btn btn-primary" onClick={handleLogin}>
               Login
