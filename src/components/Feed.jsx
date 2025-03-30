@@ -24,9 +24,9 @@ const Feed = () => {
   }, []);
   if (!feed) return <div>Loading...</div>;
   return (
-    <div className="flex flex-col justify-center items-center gap-10 w-screen">
+    <div className="flex flex-col justify-center items-center gap-10 w-screen mb-16">
       {feed.map((f) => (
-        <UserCard user={f} />
+        <UserCard user={f} key={f._id} />
       ))}
     </div>
   );
