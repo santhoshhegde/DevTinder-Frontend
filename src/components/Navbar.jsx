@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { removeUser } from "../store/userSlice";
+import { removeFeed } from "../store/feedSlice";
 import axios from "axios";
 import { API_ENDPOINTS, baseURL } from "../utils/apiConstants";
 import { Link, useNavigate } from "react-router-dom";
@@ -16,9 +17,10 @@ const Navbar = () => {
         { withCredentials: true }
       );
       dispatch(removeUser());
+      dispatch(removeFeed());
       navigate("/login");
     } catch (err) {
-      console.log(err?.response.message);
+      console.log(err);
     }
   };
   return (
