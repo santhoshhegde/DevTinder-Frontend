@@ -8,4 +8,5 @@ export const API_ENDPOINTS = {
   feed: "/feed",
   editProfile: "/profile/edit",
   connections: "/user/connections",
+  requests: "/user/request/received",
 };
