@@ -7,4 +7,5 @@ export const API_ENDPOINTS = {
   logout: "/logout",
   feed: "/feed",
   editProfile: "/profile/edit",
+  connections: "/user/connections",
 };
