@@ -20,8 +20,9 @@ const Connections = () => {
   useEffect(() => {
     getConnections();
   }, []);
-
-  if (connections.length == 0) return <h1>Loading</h1>;
+  if (!connections) return <h1>Loading</h1>;
+  if (connections.length == 0)
+    return <p className="text-center">No user found</p>;
   return (
     <div>
       {connections.map((connection) => (

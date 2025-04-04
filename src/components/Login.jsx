@@ -35,7 +35,7 @@ const Login = () => {
     try {
       const res = await axios.post(
         baseURL + API_ENDPOINTS.signUp,
-        { firstName, lastName, email, password },
+        { firstName, lastName, email, password, gender },
         { withCredentials: true }
       );
       navigate("/profile");
@@ -49,7 +49,12 @@ const Login = () => {
     <div className="flex justify-center items-center mt-[10%]">
       <div className="card bg-base-100 w-96 shadow-sm">
         <div className="card-body">
-          <form onSubmit={(e) => e.preventDefault()}>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              isLogin ? handleLogin() : handleSingup();
+            }}
+          >
             {!isLogin && (
               <>
                 <label htmlFor="firstName">First Name</label>
@@ -74,7 +79,7 @@ const Login = () => {
                   required
                 />
                 <label htmlFor="gender">Gender</label>
-                <input
+                <select
                   type="text"
                   id="gender"
                   className="input"
@@ -82,7 +87,12 @@ const Login = () => {
                   value={gender}
                   onChange={(e) => setGender(e.target.value)}
                   required
-                />
+                >
+                  <option value="">Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="others">Other</option>
+                </select>
               </>
             )}
             <label htmlFor="email">Email</label>
@@ -109,10 +119,7 @@ const Login = () => {
               <p className="m-auto text-l text-red-600 font-bold">{error}</p>
             )}
             <div className="card-actions justify-center">
-              <button
-                className="btn btn-primary"
-                onClick={isLogin ? handleLogin : handleSingup}
-              >
+              <button className="btn btn-primary">
                 {isLogin ? "Login" : "Signup"}
               </button>
             </div>
