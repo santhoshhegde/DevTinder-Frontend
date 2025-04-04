@@ -9,4 +9,5 @@ export const API_ENDPOINTS = {
   editProfile: "/profile/edit",
   connections: "/user/connections",
   requests: "/user/request/received",
+  sendRequest: "/request/send/",
 };
