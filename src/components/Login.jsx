@@ -11,7 +11,7 @@ const Login = () => {
   const [lastName, setLastName] = useState("");
   const [gender, setGender] = useState("");
   const [error, setError] = useState("");
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleLogin = async () => {
@@ -118,13 +118,13 @@ const Login = () => {
             {error && (
               <p className="m-auto text-l text-red-600 font-bold">{error}</p>
             )}
-            <div className="card-actions justify-center">
+            <div className="card-actions justify-center mt-2">
               <button className="btn btn-primary">
                 {isLogin ? "Login" : "Signup"}
               </button>
             </div>
             <p
-              className="text-center cursor-pointer"
+              className="text-center cursor-pointer mt-2"
               onClick={() => setIsLogin(!isLogin)}
             >
               {isLogin ? "New user? SignUp" : " I have account? Login"}
