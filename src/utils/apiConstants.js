@@ -10,4 +10,5 @@ export const API_ENDPOINTS = {
   connections: "/user/connections",
   requests: "/user/request/received",
   sendRequest: "/request/send/",
+  reviewRequest: "/request/review/",
 };

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { baseURL, API_ENDPOINTS } from "../utils/apiConstants";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { addRequest } from "../store/requestSlice";
+import { addRequest, removeReviewedRequest } from "../store/requestSlice";
 
 const Requests = () => {
   const dispatch = useDispatch();
@@ -17,6 +17,19 @@ const Requests = () => {
       dispatch(addRequest(res?.data?.data));
     } catch (err) {
       console.log(err.message);
+    }
+  };
+
+  const handleRequestClick = async (requestId, status) => {
+    try {
+      const res = await axios.post(
+        baseURL + API_ENDPOINTS.reviewRequest + status + "/" + requestId,
+        {},
+        { withCredentials: true }
+      );
+      dispatch(removeReviewedRequest(requestId));
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -49,8 +62,22 @@ const Requests = () => {
               <p>{about}</p>
             </div>
             <div className="flex gap-2">
-              <button className="btn btn-primary">Ignore</button>
-              <button className="btn btn-secondary">Accept</button>
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  handleRequestClick(req._id, "rejected");
+                }}
+              >
+                Reject
+              </button>
+              <button
+                className="btn btn-secondary"
+                onClick={() => {
+                  handleRequestClick(req._id, "accepted");
+                }}
+              >
+                Accept
+              </button>
             </div>
           </div>
         );
