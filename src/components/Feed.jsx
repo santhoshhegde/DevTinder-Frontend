@@ -23,11 +23,14 @@ const Feed = () => {
     getFeed();
   }, []);
   if (!feed) return <div>Loading...</div>;
+  if (feed.length == 0)
+    return <div className="text-center">No results found</div>;
   return (
     <div className="flex flex-col justify-center items-center gap-10 w-screen mb-16">
-      {feed.map((f) => (
+      <UserCard user={feed[0]} />
+      {/* {feed.map((f) => (
         <UserCard user={f} key={f._id} />
-      ))}
+      ))} */}
     </div>
   );
 };

@@ -13,7 +13,7 @@ const Requests = () => {
       const res = await axios.get(baseURL + API_ENDPOINTS.requests, {
         withCredentials: true,
       });
-      console.log(res?.data?.data[0].fromUserId);
+      // console.log(res);
       dispatch(addRequest(res?.data?.data));
     } catch (err) {
       console.log(err.message);
@@ -25,12 +25,17 @@ const Requests = () => {
   }, []);
 
   if (!request)
-    return <span className="loading loading-spinner loading-xl"></span>;
-  if (request.length == 0) return <h1>No connections</h1>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <span className="loading loading-spinner loading-xl"></span>
+      </div>
+    );
+  if (request.length == 0)
+    return <h1 className="text-center">No connections</h1>;
   return (
     <div>
       {request.map((req) => {
-        const { _id, photoUrl, firstName, lastName, about } = req.fromUserId;
+        const { _id, photoUrl, firstName, lastName, about } = req?.fromUserId;
         return (
           <div
             key={_id}
