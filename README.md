@@ -2,7 +2,7 @@
 
 Welcome to **DevTinder**'s frontend! This is where the magic happens! Built with **React.js**, **TailwindCSS**, **Daisy UI**, and **Redux**, the frontend provides a beautiful, responsive UI for developers to connect with each other in a **Tinder-like** style.
 
-![DevTinder Frontend](https://img.shields.io/badge/React.js-17.0.2-blue) ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-2.0-purple) ![Redux](https://img.shields.io/badge/Redux-4.0-orange)
+![DevTinder Frontend](https://img.shields.io/badge/React.js-19.0.0-blue) ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.0-blue) ![Redux](https://img.shields.io/badge/Redux-4.0-orange)
 
 ## 🚀 Features
 
